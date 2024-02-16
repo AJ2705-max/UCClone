@@ -1,0 +1,88 @@
+﻿@model UserLoginModel;
+
+
+
+
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/ud_Layout.css" asp-append-version="true" />
+}
+
+
+
+<div class="outer">
+    <div class="login-container registration-container">
+        <div class="row">
+            <div class="col-12">
+                <form id="loginform" class="form">
+                    <p class="title">User Login</p>
+                    <p class="message">Login now and get full access to our app.</p>
+                    <div class="input-group">
+                        <label>
+                            <span>User Name</span>
+                            <input id="UserName" required="" placeholder="Username.." type="text" class="input">
+                        </label>
+                    </div>
+                    <div class="input-group">
+                        <label>
+                            <span>Password</span>
+                            <input id="Password" required="" placeholder="Password.." type="password" class="input">
+                        </label>
+                    </div>
+                    <button type="button" id="loginBtn" class="btn btn-success submit" onclick="Login();">Sign In</button>
+                    <p class="signin">Register if you haven't yet Registered <a asp-controller="User" asp-action="Register">Register</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function Login() {
+        debugger;
+
+        var nameData = {
+            UserName: $('#UserName').val()
+        }
+        debugger;
+
+        var passData = {
+            Password: $('#Password').val()
+        }
+
+        console.log(passData);
+        debugger;
+
+        var formData = new FormData();
+        formData.append("UserName", nameData.UserName);
+        formData.append("Password", passData.Password);
+
+        // var oModel = {
+        //     UserName: $('#UserName').val(),
+        //     Password: $('#Password').val(),
+        // }
+
+        $.ajax({
+            type: "POST",
+            url: "/Login/LoginPost",
+            data: formData,
+            contentType: false,
+            processData: false,
+            //dataType: 'json',
+            success: function (response) {
+                if (response.status === "success") {
+                    alert('Login successful!');
+                    window.location.href = '/UserHomePage/UserDashboard';
+                } else {
+                    alert('Login failed. Please check your username and password.');
+                }
+            },
+            error: function (error) {
+                console.error("Error logging in:", error);
+            }
+        });
+    }
+
+
+</script>
