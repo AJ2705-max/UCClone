@@ -16,13 +16,13 @@
 
   <ItemGroup>
     <None Include="Views\Shared\_Layout.cshtml" />
-    <None Include="wwwroot\fonts\.DS_Store" />
-    <None Include="wwwroot\fonts\flaticon\font\Flaticon.svg" />
-    <None Include="wwwroot\fonts\flaticon\font\Flaticon.woff2" />
-    <None Include="wwwroot\fonts\flaticon\font\_flaticon.scss" />
-    <None Include="wwwroot\fonts\flaticon\license\license.pdf" />
-    <None Include="wwwroot\fonts\icomoon\demo-files\demo.js" />
-    <None Include="wwwroot\fonts\icomoon\fonts\icomoon.svg" />
+    <None Include="wwwroot\css\fonts\.DS_Store" />
+    <None Include="wwwroot\css\fonts\flaticon\font\Flaticon.svg" />
+    <None Include="wwwroot\css\fonts\flaticon\font\Flaticon.woff2" />
+    <None Include="wwwroot\css\fonts\flaticon\font\_flaticon.scss" />
+    <None Include="wwwroot\css\fonts\flaticon\license\license.pdf" />
+    <None Include="wwwroot\css\fonts\icomoon\demo-files\demo.js" />
+    <None Include="wwwroot\css\fonts\icomoon\fonts\icomoon.svg" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map" />
@@ -69,6 +69,10 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.0" />
     <PackageReference Include="MySql.Data" Version="8.3.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\assets\css\" />
   </ItemGroup>
 
 </Project>
