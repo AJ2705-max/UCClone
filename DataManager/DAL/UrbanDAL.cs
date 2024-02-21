@@ -37,12 +37,14 @@ namespace UrbanClapClone.DataManager.DAL
 
         public UserRegistrationModel AddUser(UserRegistrationModel umodel) 
         {
-            umodel.Password = umodel.Password + _dBManager.getSalt();
+           
+              umodel.Password = umodel.Password + _dBManager.getSalt();
 
-            _dBManager.InitDbCommand("InsertUser", CommandType.StoredProcedure);
+            _dBManager.InitDbCommand("InsertAdmin_User", CommandType.StoredProcedure);
 
-            _dBManager.AddCMDParam("@p_UserName", umodel.UserName);
-            _dBManager.AddCMDParam("@p_Password", umodel.Password);
+            _dBManager.AddCMDParam("@u_UserName", umodel.UserName);
+            _dBManager.AddCMDParam("@u_Password", umodel.Password);
+            _dBManager.AddCMDParam("@u_Role", umodel.Role);
 
             _dBManager.ExecuteNonQuery();
 

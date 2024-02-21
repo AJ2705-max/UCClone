@@ -8,6 +8,8 @@
 
         public int GetId(string UserName);
 
+        public int GetRole(string UserName);
+
         public string GetPassword(string pass);
     }
 }

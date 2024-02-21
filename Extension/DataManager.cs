@@ -14,7 +14,7 @@ namespace UrbanClapClone.Extension
             services.AddScoped<IDBManager>(AddDBManager);
             services.AddScoped<IUrbanBAL, UrbanBAL>();
             services.AddScoped<ILoginBAL, LoginBAL>();
-            services.AddScoped<IAdminBAL,AdminBAL>();
+          
             return services;
         }
 

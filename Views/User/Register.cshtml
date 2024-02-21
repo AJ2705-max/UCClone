@@ -26,7 +26,16 @@
                             <span>Password</span>
                             <input id="Password" required="" placeholder="Password.." type="password" class="input">
                         </label>
-                    </div>                                    
+                    </div>   
+                    
+                    <div class="txt_field">
+                        @Html.DropDownListFor(model => model.Role, new SelectList(new List<object>() {
+                        new { value = 1 , text = "Admin" },
+                        new { value = 2 , text = "User"  } }, "value", "text"),                        
+                                 "Select Role", new { @class = "input-field w-100 border-0" })
+                    </div>
+                    <span asp-validation-for="Role" class="text-danger"></span>
+
                     <button type="button" id="registerBtn" class="btn btn-success submit" onclick="Register();">Sign Up</button>
                     <p class="signin">Already have an account? <a asp-controller="Login" asp-action="Login">Login</a></p>
                 </form>
@@ -42,6 +51,10 @@
         var oModel = {
             UserName: $('#UserName').val(),
             Password: $('#Password').val(),
+            Role: $('#Role').val()
+            
+
+                    
         }
                        
         $.ajax({

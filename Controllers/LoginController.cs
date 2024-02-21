@@ -19,17 +19,17 @@ namespace UrbanClapClone.Controllers
         }
 
         [HttpPost]
-        public IActionResult LoginPost(string UserName, string Password) 
+        public IActionResult LoginPost(string UserName, string Password, int Id) 
         {
             UserLoginModel login = new UserLoginModel();
 
             if (ModelState.IsValid) 
             {
-                login = _ILoginBAL.LoginUser(UserName, Password);
+                login = _ILoginBAL.LoginUser(UserName, Password, Id);
 
                 if (!login.NameExist) 
                 {
-                    return Json(new { status = "warning", message = "UserName does Not Exist!" });
+                    return Json(new { status = "warning", message = "Name does Not Exist!" });
                 }
                 else if(login.GetPassword != login.ExistingPassword) 
                 {
@@ -37,9 +37,11 @@ namespace UrbanClapClone.Controllers
                 }
             }
 
-         //   _ILoginBAL.LoginUser(UserName, Password, Id);
+            //HttpContext.Session.SetInt32("Id", login.GetId);
 
-            return Json(new { status = "success", message = "User Logged In Successfully!!!" });
+
+
+            return Json(new { role = login.GetRole, status = "success", message = " Logged In Successfully!!!" });
 
             //return Json("index");
         }

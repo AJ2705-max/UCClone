@@ -4,6 +4,6 @@ namespace UrbanClapClone.BusinessManager.IBAL
 {
     public interface ILoginBAL
     {
-        public UserLoginModel LoginUser(string UserName, string Password);
+        public UserLoginModel LoginUser(string UserName, string Password, int Id);
     }
 }

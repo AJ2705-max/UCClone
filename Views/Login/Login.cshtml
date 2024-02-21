@@ -50,19 +50,13 @@
         var passData = {
             Password: $('#Password').val()
         }
-
-        console.log(passData);
         debugger;
-
+        console.log(nameData);
+        console.log(passData);
         var formData = new FormData();
         formData.append("UserName", nameData.UserName);
         formData.append("Password", passData.Password);
-
-        // var oModel = {
-        //     UserName: $('#UserName').val(),
-        //     Password: $('#Password').val(),
-        // }
-
+        debugger;      
         $.ajax({
             type: "POST",
             url: "/Login/LoginPost",
@@ -71,11 +65,17 @@
             processData: false,
             //dataType: 'json',
             success: function (response) {
-                if (response.status === "success") {
-                    alert('Login successful!');
+                if (response.status === "warning") {
+                    alert(response.message);
+
+                }
+                else if (response.status === "success" && response.role === 1) {
+                    alert(response.message);
+                    window.location.href = '/AdminHomePage/AdminDashboard';
+                }
+                else if (response.status === "success" && response.role === 2) {
+                    alert(response.message);
                     window.location.href = '/UserHomePage/UserDashboard';
-                } else {
-                    alert('Login failed. Please check your username and password.');
                 }
             },
             error: function (error) {

@@ -2,7 +2,9 @@
 {
     public class UserLoginModel
     {
-        public int GetId { get; set; }     
+        public int GetId { get; set; }
+
+        public int GetRole { get; set; }
 
         public string GetPassword { get; set; }
        

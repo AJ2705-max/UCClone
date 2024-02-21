@@ -25,7 +25,7 @@ namespace UrbanClapClone.Controllers
         {          
              _IUrbanBAL.Register(model);
 
-            return Json(new { status = "success", message = "User Registered Successfully!!!" });
+            return Json(new { status = "success", message = " Registered Successfully!!!" });
         }
     }
 }

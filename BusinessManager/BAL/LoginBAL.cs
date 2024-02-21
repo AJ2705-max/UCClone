@@ -14,7 +14,7 @@ namespace UrbanClapClone.BusinessManager.BAL
             _ILoginDAL = new LoginDAL(dBManager);
         }
 
-        public UserLoginModel LoginUser(string UserName, string pass)
+        public UserLoginModel LoginUser(string UserName, string pass, int Id)
         {
             UserLoginModel login = new UserLoginModel();
 
@@ -23,6 +23,8 @@ namespace UrbanClapClone.BusinessManager.BAL
             login.GetPassword = _ILoginDAL.GetPassword(pass);
             
             login.ExistingPassword = _ILoginDAL.LoginUser(UserName);
+
+            login.GetRole = _ILoginDAL.GetRole(UserName);
             
             login.GetId = _ILoginDAL.GetId(UserName);
 

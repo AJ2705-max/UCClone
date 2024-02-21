@@ -44,6 +44,19 @@ namespace UrbanClapClone.DataManager.DAL
             return id;
         }
 
+        public int GetRole(string UserName) 
+        {
+            _dBManager.InitDbCommand("GetRole", CommandType.StoredProcedure);
+
+            _dBManager.AddCMDParam("@IUserName", UserName);
+
+            var result = _dBManager.ExecuteScalar();
+
+            int role = Convert.ToInt32(result);    
+            
+            return role;
+        }
+
         public bool CheckNameExist(string UserName) 
         {
             _dBManager.InitDbCommand("CheckNameExist", CommandType.StoredProcedure);
