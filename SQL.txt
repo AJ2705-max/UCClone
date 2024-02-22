@@ -1,0 +1,69 @@
+Create Database ucc; 
+
+CREATE TABLE users (
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    UserName VARCHAR(255) NOT NULL,
+    Password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE admin (
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    AdminName VARCHAR(255) NOT NULL,
+    Password VARCHAR(255) NOT NULL
+);
+
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `CheckNameExist`(IN newUserName VARCHAR(255))
+BEGIN
+    DECLARE nameExists BOOLEAN;
+    SELECT EXISTS(
+		SELECT 1 FROM users WHERE UserName = newUserName
+	) INTO nameExists;
+    SELECT nameExists AS IsExists;
+END
+
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllUser`()
+BEGIN
+    SELECT Id, UserName, Password FROM users;
+END
+
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetId`(
+	IN IUserName varchar(255)
+)
+BEGIN
+	 SELECT Id from users where UserName = IUserName;
+END
+
+
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetPassword`(
+	IN user_pass varchar(100)
+)
+BEGIN
+	select MD5(user_pass);
+END
+
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetUPassword`(
+	IN user_pass varchar(100)
+)
+BEGIN
+	select MD5(user_pass);
+END
+
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetUserPassword`(IN p_UserName VARCHAR(255))
+BEGIN
+    SELECT Password
+    FROM users
+    WHERE UserName = p_UserName;
+END
+
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertAdmin`(IN AdminName VARCHAR(255), IN Password VARCHAR(255))
+BEGIN
+    INSERT INTO admin (AdminName, Password) VALUES (AdminName, Password);
+END
+
